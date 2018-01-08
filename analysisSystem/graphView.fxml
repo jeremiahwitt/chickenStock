@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.ScatterChart?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="BackgroundColor" stylesheets="@../main/style.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <MenuBar layoutX="-1.0" prefHeight="32.0" prefWidth="800.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#launchDeleteAccountView" text="Delete Account" />
+                  <MenuItem mnemonicParsing="false" onAction="#logout" text="Logout" />
+                  <MenuItem mnemonicParsing="false" onAction="#exitSystem" text="Exit" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Moving Averages">
+              <items>
+                  <CheckMenuItem fx:id="movAvg20d" mnemonicParsing="false" onAction="#displayMovAvg20Days" text="20 Days" />
+                  <CheckMenuItem fx:id="movAvg50d" mnemonicParsing="false" onAction="#displayMovAvg50Days" text="50 Days" />
+                  <CheckMenuItem fx:id="movAvg100d" mnemonicParsing="false" onAction="#displayMovAvg100Days" text="100 Days" />
+                  <CheckMenuItem fx:id="movAvg200d" mnemonicParsing="false" onAction="#displayMovAvg200Days" text="200 Days" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="TimeFrame">
+              <items>
+                  <RadioMenuItem fx:id="timeFrame1Year" mnemonicParsing="false" onAction="#changeTimeFrame1Year" text="Last Year">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="timeFrame" />
+                     </toggleGroup>
+                  </RadioMenuItem>
+                  <RadioMenuItem fx:id="timeFrame2Years" mnemonicParsing="false" onAction="#changeTimeFrame2Years" text="Last Two Years" toggleGroup="$timeFrame" />
+                  <RadioMenuItem fx:id="timeFrame5Years" mnemonicParsing="false" onAction="#changeTimeFrame5Years" text="Last Five Years" toggleGroup="$timeFrame" />
+                  <RadioMenuItem fx:id="timeFrameAllYears" mnemonicParsing="false" onAction="#changeTimeFrameAllData" text="All Data" toggleGroup="$timeFrame" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Stock">
+              <items>
+                  <Menu mnemonicParsing="false" text="#">
+                    <items>
+                      <RadioMenuItem fx:id="MMM" mnemonicParsing="false" onAction="#selectStock" text="3M">
+                        <toggleGroup>
+                            <ToggleGroup fx:id="selectedStock" />
+                        </toggleGroup>
+                      </RadioMenuItem>
+                    </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="A-I">
+                    <items>
+                        <Menu mnemonicParsing="false" text="A">
+                           <items>
+                              <RadioMenuItem fx:id="AXP" mnemonicParsing="false" onAction="#selectStock" text="American Express" toggleGroup="$selectedStock" />
+                              <RadioMenuItem fx:id="AAPL" mnemonicParsing="false" onAction="#selectStock" text="Apple" toggleGroup="$selectedStock" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="B">
+                           <items>
+                              <RadioMenuItem fx:id="BA" mnemonicParsing="false" onAction="#selectStock" text="Boeing" toggleGroup="$selectedStock" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="C">
+                           <items>
+                              <RadioMenuItem fx:id="CAT" mnemonicParsing="false" onAction="#selectStock" text="Caterpillar" toggleGroup="$selectedStock" />
+                              <RadioMenuItem fx:id="CVX" mnemonicParsing="false" onAction="#selectStock" text="Chevron" toggleGroup="$selectedStock" />
+                              <RadioMenuItem fx:id="CSCO" mnemonicParsing="false" onAction="#selectStock" text="Cisco Systems" toggleGroup="$selectedStock" />
+                              <RadioMenuItem fx:id="KO" mnemonicParsing="false" onAction="#selectStock" text="Coca-Cola" toggleGroup="$selectedStock" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="D">
+                           <items>
+                              <RadioMenuItem fx:id="DD" mnemonicParsing="false" onAction="#selectStock" text="DuPont" toggleGroup="$selectedStock" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="E">
+                           <items>
+                              <RadioMenuItem fx:id="XOM" mnemonicParsing="false" onAction="#selectStock" text="ExxonMobil" toggleGroup="$selectedStock" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="G">
+                           <items>
+                              <RadioMenuItem fx:id="GE" mnemonicParsing="false" onAction="#selectStock" text="General Electric" toggleGroup="$selectedStock" />
+                              <RadioMenuItem fx:id="GS" mnemonicParsing="false" onAction="#selectStock" text="Goldman Sachs" toggleGroup="$selectedStock" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="H">
+                           <items>
+                              <RadioMenuItem fx:id="HD" mnemonicParsing="false" onAction="#selectStock" text="The Home Depot" toggleGroup="$selectedStock" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="I">
+                           <items>
+                              <RadioMenuItem fx:id="IBM" mnemonicParsing="false" onAction="#selectStock" text="IBM" toggleGroup="$selectedStock" />
+                              <RadioMenuItem fx:id="INTC" mnemonicParsing="false" onAction="#selectStock" text="Intel" toggleGroup="$selectedStock" />
+                           </items>
+                        </Menu>
+                    </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="J-W">
+                    <items>
+                        <Menu mnemonicParsing="false" text="J">
+                          <items>
+                            <RadioMenuItem fx:id="JNJ" mnemonicParsing="false" onAction="#selectStock" text="Johnson &amp; Johnson" toggleGroup="$selectedStock" />
+                              <RadioMenuItem fx:id="JPM" mnemonicParsing="false" onAction="#selectStock" text="JPMorgan Chase" toggleGroup="$selectedStock" />
+                          </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="M">
+                          <items>
+                            <RadioMenuItem fx:id="MCD" mnemonicParsing="false" onAction="#selectStock" text="McDonald's" toggleGroup="$selectedStock" />
+                              <RadioMenuItem fx:id="MRK" mnemonicParsing="false" onAction="#selectStock" text="Merck" toggleGroup="$selectedStock" />
+                              <RadioMenuItem fx:id="MSFT" mnemonicParsing="false" onAction="#selectStock" text="Microsoft" toggleGroup="$selectedStock" />
+                          </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="N">
+                          <items>
+                            <RadioMenuItem fx:id="NKE" mnemonicParsing="false" onAction="#selectStock" text="Nike" toggleGroup="$selectedStock" />
+                          </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="P">
+                          <items>
+                            <RadioMenuItem fx:id="PFE" mnemonicParsing="false" onAction="#selectStock" text="Pfizer" toggleGroup="$selectedStock" />
+                              <RadioMenuItem fx:id="PG" mnemonicParsing="false" onAction="#selectStock" text="Procter &amp; Gamble" toggleGroup="$selectedStock" />
+                          </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="T">
+                          <items>
+                            <RadioMenuItem fx:id="TRV" mnemonicParsing="false" onAction="#selectStock" text="Travelers" toggleGroup="$selectedStock" />
+                          </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="U">
+                          <items>
+                            <RadioMenuItem fx:id="UNH" mnemonicParsing="false" onAction="#selectStock" text="UnitedHealth Group" toggleGroup="$selectedStock" />
+                              <RadioMenuItem fx:id="UTX" mnemonicParsing="false" onAction="#selectStock" text="United Technologies" toggleGroup="$selectedStock" />
+                          </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="V">
+                          <items>
+                            <RadioMenuItem fx:id="VZ" mnemonicParsing="false" onAction="#selectStock" text="Verizon" toggleGroup="$selectedStock" />
+                              <RadioMenuItem fx:id="V" mnemonicParsing="false" onAction="#selectStock" text="Visa" toggleGroup="$selectedStock" />
+                          </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="W">
+                          <items>
+                            <RadioMenuItem fx:id="WMT" mnemonicParsing="false" onAction="#selectStock" text="Wal-Mart" toggleGroup="$selectedStock" />
+                              <RadioMenuItem fx:id="DIS" mnemonicParsing="false" onAction="#selectStock" text="Walt Disney" toggleGroup="$selectedStock" />
+                          </items>
+                        </Menu>
+                    </items>
+                  </Menu>
+              </items>
+            </Menu>
+            <Menu fx:id="mviewed" mnemonicParsing="false" onHidden="#setMV" onShowing="#setMV" text="Most Viewed">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#selectMV" text="none" />
+                  <MenuItem mnemonicParsing="false" onAction="#selectMV" text="none" />
+                  <MenuItem mnemonicParsing="false" onAction="#selectMV" text="none" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#launchAboutView" text="About" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+
+      <LineChart fx:id="stockGraph" alternativeRowFillVisible="true" horizontalGridLinesVisible="true" horizontalZeroLineVisible="true" layoutX="38.0" layoutY="66.0" opacity="50" prefHeight="503.0" prefWidth="722.0" stylesheets="@lineChart.css">
+        <xAxis>
+          <NumberAxis side="BOTTOM" fx:id="xAxis" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="yAxis" side="LEFT" />
+        </yAxis>
+      </LineChart>
+       <!--TEST START-->
+       <ScatterChart fx:id="buyGraph" alternativeRowFillVisible="false" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="38.0" layoutY="66.0" legendVisible="false" prefHeight="503.0" prefWidth="722.0" stylesheets="@scatterChart.css" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
+           <xAxis>
+               <NumberAxis side="BOTTOM" fx:id="xAxisBuy" />
+           </xAxis>
+           <yAxis>
+               <NumberAxis fx:id="yAxisBuy" side="LEFT" />
+           </yAxis>
+       </ScatterChart>
+       <ScatterChart fx:id="sellGraph" alternativeRowFillVisible="false" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="38.0" layoutY="66.0" legendVisible="false" prefHeight="503.0" prefWidth="722.0" stylesheets="@scatterChart2.css" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
+           <xAxis>
+               <NumberAxis side="BOTTOM" fx:id="xAxisSell" />
+           </xAxis>
+           <yAxis>
+               <NumberAxis fx:id="yAxisSell" side="LEFT" />
+           </yAxis>
+       </ScatterChart>
+      <Pane fx:id="buySellIndicator" layoutX="259.0" layoutY="570.0" opacity="0.0" prefHeight="32.0" prefWidth="283.0">
+         <children>
+            <Circle fill="#008000" layoutX="20.0" layoutY="15.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Text layoutX="35.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Buy Indicator" />
+            <Circle fill="RED" layoutX="163.0" layoutY="15.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Text layoutX="178.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sell Indicator" />
+         </children>
+      </Pane>
+      <!-- <ScatterChart fx:id="sellGraph" layoutX="38.0" layoutY="66.0" prefHeight="503.0" prefWidth="722.0" stylesheets="@lineChart.css">
+           <xAxis>
+               <NumberAxis side="BOTTOM" fx:id="xAxis" />
+           </xAxis>
+           <yAxis>
+               <NumberAxis fx:id="yAxis" side="LEFT" />
+           </yAxis>
+       </ScatterChart>-->
+       <!--TEST END-->
+      <!--<ScatterChart fx:id="indicatorGraph" alternativeRowFillVisible="true" horizontalGridLinesVisible="true" horizontalZeroLineVisible="true" layoutX="38.0" layoutY="66.0" opacity="0.5" prefHeight="487.0" prefWidth="722.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </ScatterChart>-->
+   </children>
+</AnchorPane>

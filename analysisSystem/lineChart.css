@@ -1,0 +1,18 @@
+.chart-series-line {
+    -fx-stroke-width: 1px;
+    -fx-effect: null;
+}
+
+/*
+.chart-buySer-line {
+    -fx-stroke-width: 100px;
+    -fx-stroke-height: 100px;
+    -fx-effect: null;
+}
+
+.chart-sellSer-line {
+    -fx-stroke-width: 100px;
+    -fx-stroke-height: 100px;
+    -fx-effect: null;
+}
+*/

@@ -1,0 +1,32 @@
+.chart {
+    -fx-stroke-width: 1px;
+    -fx-stroke-height: 1px;
+    -fx-effect: null;
+    -fx-legend-visible: false;
+}
+
+.chart-plot-background {
+    -fx-background-color:transparent;
+}
+
+.chart-title{
+    -fx-opacity: 0;
+}
+.chart.label{
+-fx-opacity: 0;
+}
+.chart-legend{
+-fx-opacity: 0;
+}
+.axis-label{
+-fx-opacity: 0;
+}
+
+.axis{
+-fx-opacity: 0;
+}
+.chart-symbol {
+    -fx-background-radius: 2px ;
+    -fx-padding: 2px ;
+    -fx-background-color: red;
+}
